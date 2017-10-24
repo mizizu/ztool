@@ -1,4 +1,6 @@
+//读取目标文件
 File csv = new File("/home/jenkins/package/castrationfile.csv");
+//读取缓存
                 BufferedReader br=new BufferedReader(new InputStreamReader(new FileInputStream(csv),"UTF-8"));      
                  String line = "";
                  mylist = [] ;
