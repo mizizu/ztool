@@ -1,0 +1,11 @@
+#初始化配置输出文件
+echo 0 > ./config/csv/complicated.csv
+#获取配置文件选项
+while read line
+	do 
+      	if [[ "$line" == *,$CASTRATION,* ]]; then 
+        	echo $line > ./config/csv/complicated.csv            
+            command=$(cat ./config/csv/complicated.csv | awk -F, '{ print $4; }') 
+        fi      
+    done < /home/jenkins/package/castrationfile.csv
+cat ./config/csv/complicated.csv
