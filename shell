@@ -1,0 +1,24 @@
+#初始化配置文件
+echo 0 > ./config/csv/simple.csv 
+#读取选择参数
+OLD_IFS="$IFS" 
+IFS=','
+arrayTemp=($FUNCTION);
+IFS="$OLD_IFS"
+num=${#arrayTemp[@]};
+#获取配置文件
+cat /home/jenkins/package/fucntion-test.csv | while read line        
+				do              
+					if [[ "$line" == *,${arrayTemp[0]},* ]]; then               
+						echo $line > ./config/csv/simple.csv                     
+					fi                       
+				done
+for (( j=1; j<num+1; j=j+1 ))
+{
+    cat /home/jenkins/package/fucntion-test.csv | while read line            
+        do
+                    if [[ "$line" == *,${arrayTemp[j]},* ]]; then               
+                        echo $line >> ./config/csv/simple.csv                     
+                    fi                
+        done
+}
